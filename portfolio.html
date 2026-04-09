@@ -1,0 +1,1449 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Maghnad Debnath — AI Researcher & Engineer</title>
+<meta name="description" content="Portfolio of Maghnad Debnath — AI researcher, winner of YuvAI Global Youth Challenge 2026." />
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400&family=JetBrains+Mono:wght@300;400;500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#0c0b09;
+    --bg-2:#141210;
+    --ink:#f5efe3;
+    --ink-dim:#a9a198;
+    --ink-mute:#6b655d;
+    --line:#2a2621;
+    --gold:#d4a537;
+    --gold-soft:#e9c87a;
+    --accent:#ff5b2e;
+    --serif:'Fraunces', Georgia, serif;
+    --sans:'Inter', system-ui, sans-serif;
+    --mono:'JetBrains Mono', monospace;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:var(--sans);
+    font-weight:300;
+    line-height:1.6;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* Grain overlay */
+  body::before{
+    content:'';
+    position:fixed;inset:0;
+    pointer-events:none;
+    z-index:1000;
+    opacity:.035;
+    background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  ::selection{background:var(--gold);color:var(--bg)}
+
+  /* NAV */
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    padding:1.5rem 3rem;
+    display:flex;justify-content:space-between;align-items:center;
+    backdrop-filter:blur(12px);
+    background:rgba(12,11,9,.6);
+    border-bottom:1px solid transparent;
+    transition:border-color .4s;
+  }
+  nav.scrolled{border-bottom-color:var(--line)}
+  .logo{
+    font-family:var(--serif);
+    font-size:1.25rem;
+    font-weight:600;
+    letter-spacing:-.02em;
+  }
+  .logo span{color:var(--gold)}
+  .nav-links{display:flex;gap:2.5rem;list-style:none}
+  .nav-links a{
+    color:var(--ink-dim);
+    text-decoration:none;
+    font-family:var(--mono);
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    transition:color .3s;
+    position:relative;
+  }
+  .nav-links a:hover{color:var(--gold)}
+  .nav-links a::before{
+    content:attr(data-num);
+    color:var(--gold);
+    margin-right:.5rem;
+    font-size:.65rem;
+  }
+  .menu-btn{display:none;background:none;border:none;color:var(--ink);cursor:pointer}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    padding:8rem 3rem 4rem;
+    display:grid;
+    grid-template-columns:1.1fr .9fr;
+    gap:4rem;
+    align-items:center;
+    position:relative;
+  }
+  .hero::after{
+    content:'';
+    position:absolute;
+    top:50%;left:50%;
+    transform:translate(-50%,-50%);
+    width:900px;height:900px;
+    background:radial-gradient(circle,rgba(212,165,55,.08),transparent 60%);
+    pointer-events:none;
+    z-index:-1;
+  }
+  .hero-meta{
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    margin-bottom:1.5rem;
+    display:flex;
+    align-items:center;
+    gap:1rem;
+  }
+  .hero-meta::before{
+    content:'';
+    width:2rem;height:1px;background:var(--gold);
+  }
+  .hero h1{
+    font-family:var(--serif);
+    font-size:clamp(3rem,7vw,6.5rem);
+    font-weight:300;
+    line-height:.95;
+    letter-spacing:-.03em;
+    margin-bottom:2rem;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--gold);
+    font-weight:400;
+  }
+  .hero-sub{
+    font-size:1.1rem;
+    color:var(--ink-dim);
+    max-width:480px;
+    margin-bottom:2.5rem;
+  }
+  .hero-cta{
+    display:flex;gap:1.25rem;flex-wrap:wrap;
+  }
+  .btn{
+    display:inline-flex;align-items:center;gap:.6rem;
+    padding:.9rem 1.6rem;
+    font-family:var(--mono);
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    text-decoration:none;
+    border:1px solid var(--line);
+    color:var(--ink);
+    background:transparent;
+    cursor:pointer;
+    transition:all .3s;
+  }
+  .btn:hover{border-color:var(--gold);color:var(--gold);transform:translateY(-2px)}
+  .btn-primary{background:var(--gold);color:var(--bg);border-color:var(--gold)}
+  .btn-primary:hover{background:var(--gold-soft);border-color:var(--gold-soft);color:var(--bg)}
+
+  .hero-visual{
+    position:relative;
+    aspect-ratio:1;
+    width:100%;
+    max-width:520px;
+    min-width:380px;
+    margin-left:auto;
+  }
+  .hero-card{
+    position:absolute;
+    border:1px solid var(--line);
+    background:var(--bg-2);
+    padding:1.5rem;
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-dim);
+    transition:transform .5s;
+    white-space:nowrap;
+  }
+  .hero-card:hover{transform:translate(var(--hx,0),var(--hy,0)) scale(1.03)}
+  .hc-1{
+    top:0;left:0;width:58%;
+    --hx:-4px;--hy:-4px;
+  }
+  .hc-1 .val{font-family:var(--serif);font-size:2.4rem;color:var(--gold);font-weight:600}
+  .hc-2{
+    top:28%;right:0;width:62%;
+    --hx:4px;--hy:-4px;
+  }
+  .hc-2 .val{font-family:var(--serif);font-size:1.5rem;color:var(--ink);font-weight:400;font-style:italic;white-space:nowrap}
+  .hc-3{
+    bottom:4%;left:6%;width:78%;
+    --hx:0;--hy:4px;
+  }
+  .hc-3 .val{font-family:var(--serif);font-size:1.25rem;color:var(--ink);font-weight:400;margin-top:.4rem;white-space:normal;line-height:1.3}
+  .hero-card .lbl{
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--ink-mute);
+    font-size:.65rem;
+    margin-bottom:.5rem;
+  }
+
+  /* SECTION */
+  section{padding:8rem 3rem;position:relative}
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    gap:2rem;
+    margin-bottom:4rem;
+    padding-bottom:1.5rem;
+    border-bottom:1px solid var(--line);
+  }
+  .section-num{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--gold);
+    letter-spacing:.1em;
+  }
+  .section-title{
+    font-family:var(--serif);
+    font-size:clamp(2rem,4vw,3.5rem);
+    font-weight:300;
+    letter-spacing:-.02em;
+    flex:1;
+  }
+  .section-title em{font-style:italic;color:var(--gold-soft)}
+
+  /* ABOUT */
+  .about-grid{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:5rem;
+  }
+  .about-text p{
+    font-family:var(--serif);
+    font-size:1.35rem;
+    font-weight:300;
+    line-height:1.55;
+    color:var(--ink);
+    margin-bottom:1.5rem;
+  }
+  .about-text p:last-child{color:var(--ink-dim);font-size:1rem;font-family:var(--sans)}
+  .about-meta{
+    border-left:1px solid var(--line);
+    padding-left:2rem;
+  }
+  .meta-item{
+    margin-bottom:2rem;
+    font-family:var(--mono);
+    font-size:.75rem;
+  }
+  .meta-item .k{
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:.3rem;
+  }
+  .meta-item .v{color:var(--ink);font-size:.95rem}
+
+  /* FEATURED AWARD */
+  .featured{
+    background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 50%,var(--bg) 100%);
+    position:relative;
+    overflow:hidden;
+  }
+  .featured::before{
+    content:'₹15L';
+    position:absolute;
+    top:50%;right:-3rem;
+    transform:translateY(-50%);
+    font-family:var(--serif);
+    font-size:22rem;
+    font-weight:800;
+    color:var(--gold);
+    opacity:.04;
+    line-height:1;
+    pointer-events:none;
+  }
+  .award-card{
+    border:1px solid var(--line);
+    background:rgba(20,18,16,.6);
+    backdrop-filter:blur(10px);
+    padding:3rem;
+    position:relative;
+  }
+  .award-badge{
+    display:inline-block;
+    padding:.4rem .9rem;
+    background:var(--gold);
+    color:var(--bg);
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-bottom:1.5rem;
+    font-weight:500;
+  }
+  .award-title{
+    font-family:var(--serif);
+    font-size:clamp(1.8rem,3.5vw,3rem);
+    font-weight:400;
+    line-height:1.1;
+    letter-spacing:-.02em;
+    margin-bottom:1rem;
+  }
+  .award-title em{font-style:italic;color:var(--gold)}
+  .award-sub{
+    color:var(--ink-dim);
+    font-size:1.05rem;
+    max-width:700px;
+    margin-bottom:2.5rem;
+  }
+  .award-stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:2rem;
+    padding:2rem 0;
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    margin-bottom:2.5rem;
+  }
+  .stat .n{
+    font-family:var(--serif);
+    font-size:2.25rem;
+    font-weight:600;
+    color:var(--gold);
+    line-height:1;
+  }
+  .stat .l{
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    margin-top:.6rem;
+  }
+
+  /* PRESS FILTER */
+  .press-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:1.5rem;
+    flex-wrap:wrap;
+    gap:1rem;
+  }
+  .press-label{
+    font-family:var(--mono);
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--ink-mute);
+  }
+  .press-filters{display:flex;gap:.5rem;flex-wrap:wrap}
+  .press-filter{
+    background:transparent;
+    border:1px solid var(--line);
+    color:var(--ink-dim);
+    padding:.4rem .9rem;
+    font-family:var(--mono);
+    font-size:.65rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    cursor:pointer;
+    transition:all .3s;
+  }
+  .press-filter:hover,.press-filter.active{
+    border-color:var(--gold);
+    color:var(--gold);
+  }
+  .press-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .press-item{
+    background:var(--bg-2);
+    padding:1.5rem;
+    text-decoration:none;
+    color:var(--ink);
+    transition:all .3s;
+    display:flex;
+    flex-direction:column;
+    gap:.5rem;
+    min-height:110px;
+  }
+  .press-item:hover{
+    background:var(--bg);
+  }
+  .press-item .outlet{
+    font-family:var(--serif);
+    font-size:1.1rem;
+    font-weight:500;
+    color:var(--ink);
+  }
+  .press-item:hover .outlet{color:var(--gold)}
+  .press-item .type{
+    font-family:var(--mono);
+    font-size:.65rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+  }
+  .press-item .arrow{
+    margin-top:auto;
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--gold);
+    opacity:0;
+    transform:translateX(-5px);
+    transition:all .3s;
+  }
+  .press-item:hover .arrow{opacity:1;transform:translateX(0)}
+
+  /* PROJECTS */
+  .projects-list{display:flex;flex-direction:column}
+  .project{
+    display:grid;
+    grid-template-columns:80px 1fr auto;
+    gap:2rem;
+    align-items:start;
+    padding:2.5rem 0;
+    border-bottom:1px solid var(--line);
+    cursor:pointer;
+    transition:padding .4s;
+    position:relative;
+  }
+  .project:hover{padding-left:1.5rem}
+  .project:hover::before{
+    content:'';
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:3px;
+    background:var(--gold);
+  }
+  .project-num{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--gold);
+    padding-top:.5rem;
+  }
+  .project-main h3{
+    font-family:var(--serif);
+    font-size:2rem;
+    font-weight:400;
+    letter-spacing:-.01em;
+    margin-bottom:.75rem;
+    transition:color .3s;
+  }
+  .project:hover .project-main h3{color:var(--gold)}
+  .project-desc{
+    color:var(--ink-dim);
+    max-width:720px;
+    margin-bottom:1rem;
+  }
+  .project-tags{display:flex;gap:.5rem;flex-wrap:wrap}
+  .tag{
+    font-family:var(--mono);
+    font-size:.65rem;
+    padding:.3rem .7rem;
+    border:1px solid var(--line);
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .project-year{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--ink-mute);
+    padding-top:.5rem;
+  }
+  .project-expand{
+    grid-column:2;
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .5s ease, margin .5s ease;
+  }
+  .project.open .project-expand{
+    max-height:800px;
+    margin-top:2rem;
+  }
+  .project-detail-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:2rem;
+    padding:2rem;
+    background:var(--bg-2);
+    border:1px solid var(--line);
+  }
+  .detail-block h4{
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--gold);
+    margin-bottom:.75rem;
+  }
+  .detail-block p,.detail-block li{
+    color:var(--ink-dim);
+    font-size:.9rem;
+    line-height:1.7;
+  }
+  .detail-block ul{list-style:none;padding:0}
+  .detail-block li{position:relative;padding-left:1.2rem;margin-bottom:.4rem}
+  .detail-block li::before{
+    content:'→';
+    position:absolute;left:0;color:var(--gold);
+  }
+  .project-image-slot{
+    margin-top:1.5rem;
+    border:1px dashed var(--line);
+    aspect-ratio:16/9;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:var(--ink-mute);
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    background-image:url('');
+    background-size:cover;
+    background-position:center;
+  }
+  .project-image-slot.has-image{border:none}
+  .project-image-slot span{opacity:.5}
+  .project-image-slot.has-image span{display:none}
+
+  /* CERTIFICATES */
+  .certs-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+    gap:1.5rem;
+  }
+  .cert{
+    border:1px solid var(--line);
+    background:var(--bg-2);
+    padding:1.5rem;
+    transition:all .3s;
+    cursor:pointer;
+  }
+  .cert:hover{
+    border-color:var(--gold);
+    transform:translateY(-4px);
+  }
+  .cert-thumb{
+    aspect-ratio:4/3;
+    background:var(--bg);
+    border:1px dashed var(--line);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    margin-bottom:1rem;
+    color:var(--ink-mute);
+    font-family:var(--mono);
+    font-size:.65rem;
+    text-transform:uppercase;
+    background-size:cover;
+    background-position:center;
+  }
+  .cert-thumb.has-image{border:none}
+  .cert h4{
+    font-family:var(--serif);
+    font-size:1.15rem;
+    font-weight:500;
+    margin-bottom:.4rem;
+  }
+  .cert p{
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+
+  /* SKILLS */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:3rem;
+  }
+  .skill-group h4{
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    margin-bottom:1.25rem;
+    padding-bottom:.75rem;
+    border-bottom:1px solid var(--line);
+  }
+  .skill-list{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+  .skill-list li{
+    font-family:var(--serif);
+    font-size:1.1rem;
+    color:var(--ink);
+    transition:color .3s, padding .3s;
+    cursor:default;
+  }
+  .skill-list li:hover{color:var(--gold);padding-left:.5rem}
+
+  /* EXPERIENCE */
+  .exp-list{display:flex;flex-direction:column;gap:2rem}
+  .exp-item{
+    display:grid;
+    grid-template-columns:200px 1fr;
+    gap:2rem;
+    padding:1.5rem 0;
+    border-bottom:1px solid var(--line);
+  }
+  .exp-date{
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    padding-top:.4rem;
+  }
+  .exp-body h4{
+    font-family:var(--serif);
+    font-size:1.4rem;
+    font-weight:500;
+    margin-bottom:.25rem;
+  }
+  .exp-body .role{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    margin-bottom:.75rem;
+  }
+  .exp-body p{color:var(--ink-dim);font-size:.95rem}
+
+  /* CONTACT */
+  .contact{
+    min-height:70vh;
+    display:flex;
+    align-items:center;
+    text-align:center;
+    flex-direction:column;
+    justify-content:center;
+  }
+  .contact-eyebrow{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--gold);
+    text-transform:uppercase;
+    letter-spacing:.15em;
+    margin-bottom:1.5rem;
+  }
+  .contact h2{
+    font-family:var(--serif);
+    font-size:clamp(2.5rem,6vw,5.5rem);
+    font-weight:300;
+    letter-spacing:-.02em;
+    line-height:1;
+    max-width:900px;
+    margin-bottom:2rem;
+  }
+  .contact h2 em{font-style:italic;color:var(--gold)}
+  .contact-mail{
+    font-family:var(--serif);
+    font-size:1.5rem;
+    color:var(--ink);
+    text-decoration:none;
+    border-bottom:1px solid var(--gold);
+    padding-bottom:.25rem;
+    transition:color .3s;
+  }
+  .contact-mail:hover{color:var(--gold)}
+  .socials{
+    display:flex;gap:2rem;
+    margin-top:3rem;
+  }
+  .socials a{
+    font-family:var(--mono);
+    font-size:.75rem;
+    color:var(--ink-dim);
+    text-decoration:none;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    transition:color .3s;
+  }
+  .socials a:hover{color:var(--gold)}
+
+  /* FOOTER */
+  footer{
+    padding:2rem 3rem;
+    border-top:1px solid var(--line);
+    display:flex;
+    justify-content:space-between;
+    font-family:var(--mono);
+    font-size:.7rem;
+    color:var(--ink-mute);
+    text-transform:uppercase;
+    letter-spacing:.1em;
+  }
+
+  /* LIGHTBOX */
+  .lightbox{
+    position:fixed;inset:0;
+    background:rgba(8,7,6,.92);
+    backdrop-filter:blur(10px);
+    z-index:2000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:3rem;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .4s;
+  }
+  .lightbox.open{opacity:1;pointer-events:auto}
+  .lightbox-inner{
+    position:relative;
+    max-width:90vw;
+    max-height:85vh;
+    transform:scale(.95);
+    transition:transform .4s;
+  }
+  .lightbox.open .lightbox-inner{transform:scale(1)}
+  .lightbox img{
+    max-width:90vw;
+    max-height:80vh;
+    display:block;
+    border:1px solid var(--line);
+    box-shadow:0 30px 80px rgba(0,0,0,.6);
+  }
+  .lightbox-caption{
+    margin-top:1rem;
+    text-align:center;
+    font-family:var(--mono);
+    font-size:.75rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    color:var(--gold);
+  }
+  .lightbox-close{
+    position:absolute;
+    top:-3rem;right:0;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--ink);
+    width:2.5rem;height:2.5rem;
+    cursor:pointer;
+    font-family:var(--mono);
+    font-size:1.2rem;
+    transition:all .3s;
+  }
+  .lightbox-close:hover{border-color:var(--gold);color:var(--gold);transform:rotate(90deg)}
+  .lightbox-nav{
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    background:rgba(20,18,16,.8);
+    border:1px solid var(--line);
+    color:var(--ink);
+    width:3rem;height:3rem;
+    cursor:pointer;
+    font-family:var(--serif);
+    font-size:1.5rem;
+    transition:all .3s;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .lightbox-nav:hover{border-color:var(--gold);color:var(--gold)}
+  .lightbox-prev{left:-4rem}
+  .lightbox-next{right:-4rem}
+  @media (max-width:900px){
+    .lightbox-prev{left:.5rem}
+    .lightbox-next{right:.5rem}
+    .lightbox-close{top:-3rem;right:0}
+  }
+  .cert-thumb{position:relative;overflow:hidden}
+  .cert-thumb::after{
+    content:'⊕ view';
+    position:absolute;
+    inset:0;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:rgba(12,11,9,.7);
+    color:var(--gold);
+    font-family:var(--mono);
+    font-size:.7rem;
+    text-transform:uppercase;
+    letter-spacing:.12em;
+    opacity:0;
+    transition:opacity .3s;
+  }
+  .cert:hover .cert-thumb.has-image::after{opacity:1}
+
+  /* Reveal animation */
+  .reveal{
+    opacity:0;
+    transform:translateY(30px);
+    transition:opacity .8s ease, transform .8s ease;
+  }
+  .reveal.in{opacity:1;transform:translateY(0)}
+
+  /* Responsive */
+  @media (max-width:1100px){
+    .hero{grid-template-columns:1fr;padding:7rem 2rem 4rem;gap:3rem}
+    .hero-visual{margin:0 auto;min-width:0;max-width:460px}
+  }
+  @media (max-width:900px){
+    nav{padding:1rem 1.5rem}
+    .nav-links{display:none}
+    .hero{padding:7rem 1.5rem 3rem}
+    section{padding:5rem 1.5rem}
+    .about-grid,.skills-grid{grid-template-columns:1fr;gap:2rem}
+    .project{grid-template-columns:40px 1fr}
+    .project-year{display:none}
+    .project-detail-grid{grid-template-columns:1fr}
+    .exp-item{grid-template-columns:1fr;gap:.5rem}
+    .award-stats{grid-template-columns:repeat(2,1fr)}
+    .featured::before{font-size:12rem}
+    footer{flex-direction:column;gap:.5rem;text-align:center}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= NAV ================= -->
+<nav id="nav">
+  <div class="logo">Maghnad<span>.</span></div>
+  <ul class="nav-links">
+    <li><a href="#about" data-num="01">About</a></li>
+    <li><a href="#award" data-num="02">Award</a></li>
+    <li><a href="#work" data-num="03">Work</a></li>
+    <li><a href="#certs" data-num="04">Certificates</a></li>
+    <li><a href="#skills" data-num="05">Skills</a></li>
+    <li><a href="#contact" data-num="06">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <div>
+    <div class="hero-meta">Kolkata · India · Available 2026</div>
+    <h1>Building <em>intelligent</em> systems<br>that matter.</h1>
+    <p class="hero-sub">AI researcher & engineer working at the intersection of deep learning, IoT, and real-world impact. Winner of the YuvAI Global Youth Challenge at the India AI Impact Summit 2026.</p>
+    <div class="hero-cta">
+      <a href="#work" class="btn btn-primary">View Work →</a>
+      <a href="Maghnad_Debnath.pdf" class="btn" download>Download CV</a>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-card hc-1">
+      <div class="lbl">Grand Prize</div>
+      <div class="val">₹15L</div>
+      <div style="margin-top:.5rem">YuvAI 2026</div>
+    </div>
+    <div class="hero-card hc-2">
+      <div class="lbl">Rank</div>
+      <div class="val">1st / 20,000+</div>
+      <div style="margin-top:.5rem">Projects nationwide</div>
+    </div>
+    <div class="hero-card hc-3">
+      <div class="lbl">Focus</div>
+      <div class="val">Deep Learning · IoT · RAG</div>
+    </div>
+  </div>
+</header>
+
+<!-- ================= ABOUT ================= -->
+<section id="about">
+  <div class="section-head reveal">
+    <span class="section-num">01 / About</span>
+    <h2 class="section-title">A short <em>introduction</em></h2>
+  </div>
+  <div class="about-grid">
+    <div class="about-text reveal">
+      <p>I'm a Computer Science undergraduate at the Institute of Engineering and Management, Kolkata — specializing in IoT, Cyber Security, and Blockchain.</p>
+      <p>I build AI systems that solve problems people actually face: forest fire detection, medical RAG pipelines, drowsiness monitoring for drivers. My recent work on hybrid CNN-FFNN architectures for real-time hazard analysis earned a patent application and the first prize at the India AI Impact Summit 2026.</p>
+    </div>
+    <div class="about-meta reveal">
+      <div class="meta-item"><div class="k">Education</div><div class="v">B.Tech CSE, UEM Kolkata · CGPA 8.95</div></div>
+      <div class="meta-item"><div class="k">Based in</div><div class="v">Madhyamgram, West Bengal</div></div>
+      <div class="meta-item"><div class="k">Interests</div><div class="v">Deep Learning · Spatiotemporal ML · RAG</div></div>
+      <div class="meta-item"><div class="k">Status</div><div class="v">Open to internships & research collabs</div></div>
+      <!-- ADD MORE META ITEMS HERE -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= FEATURED AWARD ================= -->
+<section id="award" class="featured">
+  <div class="section-head reveal">
+    <span class="section-num">02 / Recognition</span>
+    <h2 class="section-title">The <em>flagship</em> win</h2>
+  </div>
+  <div class="award-card reveal">
+    <span class="award-badge">★ First Prize · YuvAI Global Youth Challenge 2026</span>
+    <h3 class="award-title">Selected <em>first</em> out of 20,000+ projects at the India AI Impact Summit, New Delhi.</h3>
+    <p class="award-sub">Organised by the IndiaAI Mission under the Ministry of Electronics and Information Technology, the YuvAI Global Youth Challenge awarded Team AgniSena the grand prize of ₹15,00,000 for an IoT-based forest fire detection system using a hybrid CNN-FFNN architecture.</p>
+    <div class="award-stats">
+      <div class="stat"><div class="n">1st</div><div class="l">National Rank</div></div>
+      <div class="stat"><div class="n">₹15L</div><div class="l">Prize Money</div></div>
+      <div class="stat"><div class="n">20K+</div><div class="l">Projects Beaten</div></div>
+      <div class="stat"><div class="n">22+</div><div class="l">Media Features</div></div>
+    </div>
+
+    <div class="press-header">
+      <span class="press-label">— Press &amp; Media Coverage</span>
+      <div class="press-filters">
+        <button class="press-filter active" data-f="all">All</button>
+        <button class="press-filter" data-f="national">National</button>
+        <button class="press-filter" data-f="regional">Regional</button>
+        <button class="press-filter" data-f="tv">TV / Video</button>
+        <button class="press-filter" data-f="gov">Official</button>
+      </div>
+    </div>
+
+    <div class="press-grid" id="pressGrid">
+      <!-- Press items. data-cat controls filter. -->
+      <a href="https://www.pib.gov.in/PressReleasePage.aspx?PRID=2229392&reg=3&lang=2" target="_blank" rel="noopener" class="press-item" data-cat="gov national">
+        <div class="outlet">Press Information Bureau</div>
+        <div class="type">Govt. of India · Press Release</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://ddnews.gov.in/en/india-ai-impact-summit-2026-showcases-youth-led-ai-innovation-for-public-good/" target="_blank" rel="noopener" class="press-item" data-cat="gov national tv">
+        <div class="outlet">DD News</div>
+        <div class="type">National Broadcaster</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://www.ndtv.com/education/ai-impact-summit-2026-all-about-yuvai-the-youth-focused-ai-challenge-top-20-finalists-announced-for-the-challenge-11006469" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">NDTV</div>
+        <div class="type">National · Education</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://www.thestatesman.com/books-education/iem-uem-students-win-big-at-ai-summit-in-delhi-1503560242.html" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">The Statesman</div>
+        <div class="type">National Daily</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://www.google.com/amp/s/www.educationtimes.com/article/featured-article/99741107/iem-students-from-uem-kolkata-wins-the-top-two-prizes-in-the-ai-impact-summit-out-of-20-000-projects%3famp=1" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">Education Times</div>
+        <div class="type">Times of India</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://www.etnownews.com/bizz-impact/iem-uem-students-at-the-university-of-engineering-and-management-have-won-the-1st-and-2nd-prizes-in-the-yuvai-project-competition-in-the-india-ai-impact-summit-2026-article-153709084" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">ET Now</div>
+        <div class="type">Business News</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://etedge-insights.com/technology/artificial-intelligence/india-ai-impact-summit-sets-global-benchmark-for-scale-and-ambition-ashwini-vaishnaw/" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">ET Edge Insights</div>
+        <div class="type">Technology</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://navbharattimes.indiatimes.com/tech/ai-news/india-ai-impact-summit-top-70-ai-projects-list-health-agriculture-climate-yuvai-women-leadership-projects/articleshow/128432414.cms" target="_blank" rel="noopener" class="press-item" data-cat="national">
+        <div class="outlet">Navbharat Times</div>
+        <div class="type">National · Hindi</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://epaper.telegraphindia.com/calcutta-edition/29/2026-02-28/page-15/ad229934.html" target="_blank" rel="noopener" class="press-item" data-cat="national regional">
+        <div class="outlet">The Telegraph</div>
+        <div class="type">Calcutta Edition</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://taazatv.com/article/iem-uem-students-win-first-and-second-prizes-at-india-ai-impact-summit-2026&61923&en&West%20Bengal" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Taaza TV</div>
+        <div class="type">West Bengal</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://www.sangbadpratidin.in/career/iem-uem-students-win-top-two-prizes-at-india-ai-impact-summit-2026/pid/1130244/" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Sangbad Pratidin</div>
+        <div class="type">Regional · Bengali</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://epaper.sangbadpratidin.in/epaper/edition/4508/sangbad-pratidin-05-03-26/page/6" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Sangbad Pratidin</div>
+        <div class="type">ePaper · Day 2</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://drive.google.com/file/d/1BGV2fjuK_3PG9iLy9EfgjcPgc8toVvEU/view?usp=drivesdk" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Ei Samay</div>
+        <div class="type">Times Group · Bengali</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://drive.google.com/file/d/1oWqAQx1mrqqle4UAE-_nQWSzPib_RL-A/view?usp=drivesdk" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Ei Samay</div>
+        <div class="type">Feature Coverage</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://drive.google.com/file/d/1oWqAQx1mrqqle4UAE-_nQWSzPib_RL-A/view?usp=drivesdk" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">Sangbad Pravakar</div>
+        <div class="type">Regional · Bengali</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <a href="https://youtu.be/ifwM22kgdxs?si=b-IL--xzgyvNHR1M" target="_blank" rel="noopener" class="press-item" data-cat="tv regional">
+        <div class="outlet">Calcutta News</div>
+        <div class="type">TV Coverage</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://youtu.be/DRGp5pQcz9E?si=BiO_M9xd5w8ryBeb" target="_blank" rel="noopener" class="press-item" data-cat="tv regional">
+        <div class="outlet">Kolkata TV</div>
+        <div class="type">TV Coverage</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://youtu.be/Gk0s_LMMLSg?si=tmvF3fq70Gg7XG6Z" target="_blank" rel="noopener" class="press-item" data-cat="tv regional">
+        <div class="outlet">Zee 24 Ghanta</div>
+        <div class="type">TV Coverage</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://www.facebook.com/share/v/14X536ZPv26/" target="_blank" rel="noopener" class="press-item" data-cat="tv regional">
+        <div class="outlet">TV9 Bangla</div>
+        <div class="type">TV Coverage</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://drive.google.com/file/d/1rUBWetJmAB1E3QMdUzWTevB8cUwuK-w4/view?usp=drivesdk" target="_blank" rel="noopener" class="press-item" data-cat="tv regional">
+        <div class="outlet">R Bangla</div>
+        <div class="type">TV Coverage</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://www.youtube.com/live/iQsozVMsZFY?si=bdtHhddhvEPKdBpc" target="_blank" rel="noopener" class="press-item" data-cat="tv gov national">
+        <div class="outlet">IndiaAI Live</div>
+        <div class="type">Official Livestream</div>
+        <div class="arrow">Watch →</div>
+      </a>
+      <a href="https://www.facebook.com/share/p/1792sdukoF/" target="_blank" rel="noopener" class="press-item" data-cat="regional">
+        <div class="outlet">IEM Kolkata</div>
+        <div class="type">Institutional</div>
+        <div class="arrow">Read →</div>
+      </a>
+      <!-- ADD MORE PRESS ITEMS HERE -->
+    </div>
+  </div>
+</section>
+
+<!-- ================= WORK ================= -->
+<section id="work">
+  <div class="section-head reveal">
+    <span class="section-num">03 / Selected Work</span>
+    <h2 class="section-title">Things I've <em>built</em></h2>
+  </div>
+  <div class="projects-list">
+    <!-- PROJECT 01: FOREST FIRE -->
+    <div class="project reveal" onclick="this.classList.toggle('open')">
+      <div class="project-num">01</div>
+      <div class="project-main">
+        <h3>AgniSena — IoT Forest Fire Detection</h3>
+        <p class="project-desc">A hybrid CNN-FFNN architecture deployed on IoT sensor networks for real-time predictive hazard analysis. Patent filed; awarded the grand prize at the India AI Impact Summit 2026.</p>
+        <div class="project-tags">
+          <span class="tag">CNN</span><span class="tag">FFNN</span><span class="tag">Python</span><span class="tag">IoT</span><span class="tag">TensorFlow</span>
+        </div>
+        <div class="project-expand">
+          <div class="project-detail-grid">
+            <div class="detail-block">
+              <h4>Problem</h4>
+              <p>Forest fires escalate quickly, and conventional detection systems rely on visual confirmation after ignition. We needed a way to predict and alert <em>before</em> the fire spreads.</p>
+              <h4 style="margin-top:1.5rem">Approach</h4>
+              <ul>
+                <li>Hybrid CNN-FFNN fusing visual + sensor streams</li>
+                <li>Real-time inference on low-power edge devices</li>
+                <li>Integrated alert pipeline to field responders</li>
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h4>Impact</h4>
+              <ul>
+                <li>Ranked 1st of 20,000+ projects, YuvAI 2026</li>
+                <li>₹15,00,000 grand prize (Team AgniSena)</li>
+                <li>Patent application filed for the hybrid architecture</li>
+                <li>Covered by PIB, NDTV, The Statesman, and 20+ outlets</li>
+              </ul>
+              <h4 style="margin-top:1.5rem">Stack</h4>
+              <p>Python, TensorFlow, Keras, IoT sensor suite, edge deployment.</p>
+            </div>
+          </div>
+          <!-- IMAGE SLOT: replace background-image URL with your photo -->
+          <div class="project-image-slot" style="background-image:url('images/forest-fire.jpg')">
+            <span>[ Drop image: images/forest-fire.jpg ]</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-year">2025 — 26</div>
+    </div>
+
+    <!-- PROJECT 02: DROWSINESS -->
+    <div class="project reveal" onclick="this.classList.toggle('open')">
+      <div class="project-num">02</div>
+      <div class="project-main">
+        <h3>Driver Drowsiness Detection System</h3>
+        <p class="project-desc">Real-time drowsiness monitor using OpenCV facial landmarks on Raspberry Pi and Arduino Uno, with a Streamlit dashboard and buzzer alerting hardware for at-risk drivers.</p>
+        <div class="project-tags">
+          <span class="tag">OpenCV</span><span class="tag">dlib</span><span class="tag">Raspberry Pi</span><span class="tag">Arduino</span><span class="tag">Streamlit</span>
+        </div>
+        <div class="project-expand">
+          <div class="project-detail-grid">
+            <div class="detail-block">
+              <h4>Problem</h4>
+              <p>Drowsy driving causes thousands of preventable accidents each year. Commercial solutions are expensive and proprietary — I built an affordable open alternative.</p>
+              <h4 style="margin-top:1.5rem">Approach</h4>
+              <ul>
+                <li>68-point facial landmarks via dlib for eye-aspect-ratio tracking</li>
+                <li>Raspberry Pi inference + Arduino Uno for hardware I/O</li>
+                <li>Streamlit dashboard for live telemetry and logs</li>
+                <li>Buzzer + haptic alerts when EAR drops below threshold</li>
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h4>Stack</h4>
+              <p>Python, OpenCV, dlib, Streamlit, Raspberry Pi 4, Arduino Uno, piezo buzzer.</p>
+              <h4 style="margin-top:1.5rem">Outcome</h4>
+              <p>Reliable real-time detection on an edge device with a total hardware cost under ₹5,000.</p>
+            </div>
+          </div>
+          <div class="project-image-slot" style="background-image:url('images/drowsiness.jpg')">
+            <span>[ Drop image: images/drowsiness.jpg ]</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-year">2025</div>
+    </div>
+
+    <!-- PROJECT 03: MEDICAL RAG -->
+    <div class="project reveal" onclick="this.classList.toggle('open')">
+      <div class="project-num">03</div>
+      <div class="project-main">
+        <h3>TruthTriage — Medical RAG System</h3>
+        <p class="project-desc">A retrieval-augmented generation framework that grounds LLMs in verified medical datasets to reduce hallucinations. Awarded 2nd Runner Up at IMI Ygnite 2026.</p>
+        <div class="project-tags">
+          <span class="tag">LLaMA 2</span><span class="tag">LangChain</span><span class="tag">FAISS</span><span class="tag">FastAPI</span><span class="tag">RAG</span>
+        </div>
+        <div class="project-expand">
+          <div class="project-detail-grid">
+            <div class="detail-block">
+              <h4>Problem</h4>
+              <p>General-purpose LLMs hallucinate on clinical questions — dangerous for any triage-adjacent use. TruthTriage grounds every response in verified medical literature.</p>
+              <h4 style="margin-top:1.5rem">Approach</h4>
+              <ul>
+                <li>Curated medical corpus with FAISS vector indexing</li>
+                <li>LangChain orchestration with source citation</li>
+                <li>LLaMA 2 backbone, served via FastAPI</li>
+                <li>Confidence scoring and abstention on low-support queries</li>
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h4>Recognition</h4>
+              <ul>
+                <li>2nd Runner Up, IMI Ygnite InnovateX, IgniteX 2.0</li>
+                <li>Team Hackspire — IMI Kolkata, Jan 2026</li>
+                <li>Cash prize ₹5,000</li>
+              </ul>
+              <h4 style="margin-top:1.5rem">Stack</h4>
+              <p>LLaMA 2, LangChain, FAISS, FastAPI, Python.</p>
+            </div>
+          </div>
+          <div class="project-image-slot" style="background-image:url('images/medical-rag.jpg')">
+            <span>[ Drop image: images/medical-rag.jpg ]</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-year">2025 — 26</div>
+    </div>
+
+    <!-- PROJECT 04: NLP RESUME -->
+    <div class="project reveal" onclick="this.classList.toggle('open')">
+      <div class="project-num">04</div>
+      <div class="project-main">
+        <h3>NLP Resume Screening Application</h3>
+        <p class="project-desc">An intelligent candidate classification pipeline that parses, segments, and ranks resumes at scale — cutting manual screening time for large recruitment datasets.</p>
+        <div class="project-tags">
+          <span class="tag">NLP</span><span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">TF-IDF</span>
+        </div>
+        <div class="project-expand">
+          <div class="project-detail-grid">
+            <div class="detail-block">
+              <h4>Problem</h4>
+              <p>Recruiters spend hours on first-pass resume screening. The goal: surface the most relevant candidates automatically while keeping the classifier explainable.</p>
+              <h4 style="margin-top:1.5rem">Approach</h4>
+              <ul>
+                <li>Text parsing and section segmentation</li>
+                <li>Feature extraction via TF-IDF and keyword signals</li>
+                <li>Supervised classification with scikit-learn</li>
+              </ul>
+            </div>
+            <div class="detail-block">
+              <h4>Stack</h4>
+              <p>Python, NLTK, scikit-learn, pandas.</p>
+              <h4 style="margin-top:1.5rem">Outcome</h4>
+              <p>Substantial reduction in first-pass screening time on test recruitment datasets.</p>
+            </div>
+          </div>
+          <div class="project-image-slot" style="background-image:url('images/resume-nlp.jpg')">
+            <span>[ Drop image: images/resume-nlp.jpg ]</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-year">2025</div>
+    </div>
+
+    <!-- ADD NEW PROJECTS HERE: copy the .project block above and update fields -->
+  </div>
+</section>
+
+<!-- ================= CERTIFICATES ================= -->
+<section id="certs">
+  <div class="section-head reveal">
+    <span class="section-num">04 / Awards & Certificates</span>
+    <h2 class="section-title">Proof of <em>work</em></h2>
+  </div>
+  <div class="certs-grid" id="certsGrid">
+    <div class="cert reveal" data-img="images/cert-yuvai.jpg" data-title="YuvAI Global Youth Challenge — First Prize">
+      <div class="cert-thumb" style="background-image:url('images/cert-yuvai.jpg')"></div>
+      <h4>YuvAI Global Youth Challenge</h4>
+      <p>First Prize · Feb 2026</p>
+    </div>
+    <div class="cert reveal" data-img="images/cert-yuvai-cheque.jpg" data-title="₹15 Lakh Grand Prize Cheque">
+      <div class="cert-thumb" style="background-image:url('images/cert-yuvai-cheque.jpg')"></div>
+      <h4>₹15L Grand Prize Cheque</h4>
+      <p>India AI Impact Summit 2026</p>
+    </div>
+    <div class="cert reveal" data-img="images/cert-imi-ygnite.jpg" data-title="IMI Ygnite InnovateX — 2nd Runner Up">
+      <div class="cert-thumb" style="background-image:url('images/cert-imi-ygnite.jpg')"></div>
+      <h4>IMI Ygnite — InnovateX</h4>
+      <p>2nd Runner Up · Jan 2026</p>
+    </div>
+    <div class="cert reveal" data-img="images/cert-lloyds.jpg" data-title="Lloyds Banking Group — Data Science Simulation">
+      <div class="cert-thumb" style="background-image:url('images/cert-lloyds.jpg')">[ images/cert-lloyds.jpg ]</div>
+      <h4>Lloyds Banking Group</h4>
+      <p>Data Science Simulation · 2025</p>
+    </div>
+    <div class="cert reveal" data-img="images/cert-deloitte.jpg" data-title="Deloitte Australia — Data Analytics Simulation">
+      <div class="cert-thumb" style="background-image:url('images/cert-deloitte.jpg')"></div>
+      <h4>Deloitte Australia</h4>
+      <p>Data Analytics Simulation · 2025</p>
+    </div>
+    <div class="cert reveal" data-img="images/cert-nptel.jpg" data-title="NPTEL — Python for Data Science">
+      <div class="cert-thumb" style="background-image:url('images/cert-nptel.jpg')"></div>
+      <h4>Python for Data Science</h4>
+      <p>NPTEL · 2023</p>
+    </div>
+    <!-- ADD MORE CERTIFICATES HERE: copy a .cert block and update data-img, data-title, thumb, h4, p -->
+  </div>
+</section>
+
+<!-- ================= SKILLS ================= -->
+<section id="skills">
+  <div class="section-head reveal">
+    <span class="section-num">05 / Skills</span>
+    <h2 class="section-title">What I <em>work with</em></h2>
+  </div>
+  <div class="skills-grid">
+    <div class="skill-group reveal">
+      <h4>Languages</h4>
+      <ul class="skill-list">
+        <li>Python</li>
+        <li>C++</li>
+        <li>SQL (MySQL)</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <h4>ML / AI</h4>
+      <ul class="skill-list">
+        <li>TensorFlow · Keras</li>
+        <li>PyTorch</li>
+        <li>Transformers (BERT, GPT)</li>
+        <li>RAG Frameworks</li>
+        <li>LangChain · FAISS</li>
+        <li>Spatiotemporal Modeling</li>
+      </ul>
+    </div>
+    <div class="skill-group reveal">
+      <h4>Tools &amp; Deployment</h4>
+      <ul class="skill-list">
+        <li>FastAPI</li>
+        <li>Streamlit</li>
+        <li>Tableau</li>
+        <li>Feature Engineering</li>
+        <li>Model Deployment</li>
+        <li>Git</li>
+      </ul>
+    </div>
+    <!-- ADD MORE SKILL GROUPS HERE -->
+  </div>
+</section>
+
+<!-- ================= EXPERIENCE ================= -->
+<section id="experience">
+  <div class="section-head reveal">
+    <span class="section-num">06 / Experience</span>
+    <h2 class="section-title">Where I've <em>worked</em></h2>
+  </div>
+  <div class="exp-list">
+    <div class="exp-item reveal">
+      <div class="exp-date">June 2025 · Remote</div>
+      <div class="exp-body">
+        <h4>Lloyds Banking Group</h4>
+        <div class="role">Data Science Job Simulation</div>
+        <p>Predicted customer churn using Random Forest, achieving an ROC-AUC of 0.82. Improved accuracy through preprocessing and hyperparameter tuning with GridSearchCV.</p>
+      </div>
+    </div>
+    <div class="exp-item reveal">
+      <div class="exp-date">June 2025 · Remote</div>
+      <div class="exp-body">
+        <h4>Deloitte Australia</h4>
+        <div class="role">Data Analytics Job Simulation</div>
+        <p>Translated raw forensic datasets into business cases using statistical analysis and built interactive Tableau dashboards.</p>
+      </div>
+    </div>
+    <!-- ADD MORE EXPERIENCE HERE -->
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section id="contact" class="contact">
+  <div class="contact-eyebrow reveal">— Let's build something</div>
+  <h2 class="reveal">Got an <em>interesting</em> problem?<br>I'd love to hear about it.</h2>
+  <a href="mailto:debnathmeghnad@gmail.com" class="contact-mail reveal">debnathmeghnad@gmail.com</a>
+  <div class="socials reveal">
+    <a href="https://linkedin.com/in/maghnad-debnath-34635827b/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <a href="https://github.com/Maghnad" target="_blank" rel="noopener">GitHub ↗</a>
+    <a href="tel:+916291195342">+91 6291195342</a>
+  </div>
+</section>
+
+<!-- ================= LIGHTBOX ================= -->
+<div class="lightbox" id="lightbox" role="dialog" aria-hidden="true">
+  <div class="lightbox-inner">
+    <button class="lightbox-close" id="lbClose" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lbPrev" aria-label="Previous">‹</button>
+    <button class="lightbox-nav lightbox-next" id="lbNext" aria-label="Next">›</button>
+    <img id="lbImg" src="" alt="">
+    <div class="lightbox-caption" id="lbCaption"></div>
+  </div>
+</div>
+
+<footer>
+  <div>© 2026 Maghnad Debnath</div>
+  <div>Built with intention · Kolkata, India</div>
+</footer>
+
+<script>
+  // Nav scroll state
+  const nav=document.getElementById('nav');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>40);
+  });
+
+  // Reveal on scroll
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // Press filter
+  const filters=document.querySelectorAll('.press-filter');
+  const pressItems=document.querySelectorAll('#pressGrid .press-item');
+  filters.forEach(b=>{
+    b.addEventListener('click',()=>{
+      filters.forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const f=b.dataset.f;
+      pressItems.forEach(it=>{
+        const cats=it.dataset.cat||'';
+        it.style.display=(f==='all'||cats.includes(f))?'flex':'none';
+      });
+    });
+  });
+
+  // Stop project expand from triggering on link click inside
+  document.querySelectorAll('.project a').forEach(a=>{
+    a.addEventListener('click',e=>e.stopPropagation());
+  });
+
+  // Check if image slots have real images; if not, show placeholder text
+  document.querySelectorAll('.project-image-slot, .cert-thumb').forEach(el=>{
+    const bg=el.style.backgroundImage;
+    if(bg && bg!=="url('')" && bg!=='url("")'){
+      const url=bg.slice(5,-2);
+      const img=new Image();
+      img.onload=()=>el.classList.add('has-image');
+      img.onerror=()=>{}; // keep placeholder
+      img.src=url;
+    }
+  });
+
+  // ===== LIGHTBOX =====
+  const lb=document.getElementById('lightbox');
+  const lbImg=document.getElementById('lbImg');
+  const lbCaption=document.getElementById('lbCaption');
+  const lbClose=document.getElementById('lbClose');
+  const lbPrev=document.getElementById('lbPrev');
+  const lbNext=document.getElementById('lbNext');
+  const certCards=Array.from(document.querySelectorAll('#certsGrid .cert'));
+  let currentIdx=0;
+
+  function openLightbox(idx){
+    currentIdx=idx;
+    const card=certCards[idx];
+    const src=card.dataset.img;
+    const title=card.dataset.title||'';
+    // Test if image actually loads before showing
+    const test=new Image();
+    test.onload=()=>{
+      lbImg.src=src;
+      lbCaption.textContent=title;
+      lb.classList.add('open');
+      lb.setAttribute('aria-hidden','false');
+      document.body.style.overflow='hidden';
+    };
+    test.onerror=()=>{
+      alert('Image not found yet: '+src+'\nAdd the file to your images/ folder.');
+    };
+    test.src=src;
+  }
+  function closeLightbox(){
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden','true');
+    document.body.style.overflow='';
+  }
+  function navLightbox(dir){
+    currentIdx=(currentIdx+dir+certCards.length)%certCards.length;
+    openLightbox(currentIdx);
+  }
+
+  certCards.forEach((c,i)=>{
+    c.addEventListener('click',()=>openLightbox(i));
+  });
+  lbClose.addEventListener('click',closeLightbox);
+  lbPrev.addEventListener('click',e=>{e.stopPropagation();navLightbox(-1)});
+  lbNext.addEventListener('click',e=>{e.stopPropagation();navLightbox(1)});
+  lb.addEventListener('click',e=>{if(e.target===lb)closeLightbox()});
+  document.addEventListener('keydown',e=>{
+    if(!lb.classList.contains('open'))return;
+    if(e.key==='Escape')closeLightbox();
+    if(e.key==='ArrowLeft')navLightbox(-1);
+    if(e.key==='ArrowRight')navLightbox(1);
+  });
+</script>
+
+</body>
+</html>
